@@ -1,0 +1,1882 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{06. Election Result}
+    
+    
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{6장 19대 대선 자료
+분석하기}\label{uxc7a5-19uxb300-uxb300uxc120-uxc790uxb8cc-uxbd84uxc11duxd558uxae30}
+
+\subsubsection{\texorpdfstring{작성 :
+\href{http://pinkwink.kr}{PinkWink}}{작성 : PinkWink}}\label{uxc791uxc131-pinkwink}
+
+\subsubsection{주의}\label{uxc8fcuxc758}
+
+\begin{itemize}
+\tightlist
+\item
+  이 책을 집필완료한 후 선거관리 위원회 홈페이지가 재보궐선거로
+  구성화면이 변경되었습니다.
+\item
+  그러므로 일일이 진입하던 코드를 생략하고, 바로 19대 대통령 선거 결과를
+  확인할 수 있는
+  페이지\href{http://info.nec.go.kr/main/showDocument.xhtml?electionId=0000000000\&topMenuId=VC\&secondMenuId=VCCP09}{바로가기}로
+  진입합니다.
+\item
+  그리고 6-1, 6-2절의 코드는 바뀝니다. 그러나 6-3절부터 학습하시는
+  경우라면 Github에서 배포하는 데이터를 사용하시면 됩니다.
+\item
+  아래 6-1, 6-2절의 코드가 변경되는 것을 양해해 주시기 바랍니다.
+\end{itemize}
+
+\subsection{6-1. Selenium과 Beautiful Soup을 이용한 데이터 획득 준비
+작업}\label{seleniumuxacfc-beautiful-soupuxc744-uxc774uxc6a9uxd55c-uxb370uxc774uxd130-uxd68duxb4dd-uxc900uxbe44-uxc791uxc5c5}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        
+        \PY{k+kn}{import} \PY{n+nn}{platform}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        
+        \PY{n}{path} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{c:/Windows/Fonts/malgun.ttf}\PY{l+s+s2}{\PYZdq{}}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{font\PYZus{}manager}\PY{p}{,} \PY{n}{rc}
+        \PY{k}{if} \PY{n}{platform}\PY{o}{.}\PY{n}{system}\PY{p}{(}\PY{p}{)} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Darwin}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+            \PY{n}{rc}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{family}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{AppleGothic}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{platform}\PY{o}{.}\PY{n}{system}\PY{p}{(}\PY{p}{)} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Windows}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+            \PY{n}{font\PYZus{}name} \PY{o}{=} \PY{n}{font\PYZus{}manager}\PY{o}{.}\PY{n}{FontProperties}\PY{p}{(}\PY{n}{fname}\PY{o}{=}\PY{n}{path}\PY{p}{)}\PY{o}{.}\PY{n}{get\PYZus{}name}\PY{p}{(}\PY{p}{)}
+            \PY{n}{rc}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{family}\PY{o}{=}\PY{n}{font\PYZus{}name}\PY{p}{)}
+        \PY{k}{else}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Unknown system... sorry\PYZti{}\PYZti{}\PYZti{}\PYZti{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}    
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{axes.unicode\PYZus{}minus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{False}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{selenium} \PY{k}{import} \PY{n}{webdriver}
+        \PY{k+kn}{import} \PY{n+nn}{time}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  책에서 소개된 주소의 페이지는 이제 책 내용과 맞지 않습니다. P236의 In
+  {[}3{]}은 아래와 같이 변경합니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{driver} \PY{o}{=} \PY{n}{webdriver}\PY{o}{.}\PY{n}{Chrome}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../driver/chromedriver}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{driver}\PY{o}{.}\PY{n}{get}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{http://info.nec.go.kr/main/showDocument.xhtml?electionId=0000000000\PYZam{}topMenuId=VC\PYZam{}secondMenuId=VCCP09}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{대통령선거}라는 글자부분을 클릭합니다. 해당 글자에서 앞 장에서
+  설명한 크롬 개발자 도구로 코드를 확인하면 \textbf{id}가
+  \textbf{electionType1}으로 나타납니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{driver}\PY{o}{.}\PY{n}{find\PYZus{}element\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{electionType1}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{click}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  그리고 나타나는 선택항목에서 \textbf{제19대}를 선택하도록 합니다. 역시
+  크롬 개발자 도구에서 해당 위치의 id는 \textbf{electionName}이라는 것을
+  찾을 수 있습니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{driver}\PY{o}{.}\PY{n}{find\PYZus{}element\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{electionName}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{send\PYZus{}keys}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{제19대}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  그리고 나타나는 선택에서 \textbf{대통령선거}를 선택하도록 합니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{driver}\PY{o}{.}\PY{n}{find\PYZus{}element\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{electionCode}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{send\PYZus{}keys}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{대통령선거}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  이제 나타나는 시도 항목에서 선택 부분의 XPath를 찾고, 해당 리스트를
+  가져옵니다
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{sido\PYZus{}list\PYZus{}raw} \PY{o}{=} \PY{n}{driver}\PY{o}{.}\PY{n}{find\PYZus{}element\PYZus{}by\PYZus{}xpath}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s+s2}{//*[@id=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cityCode}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{]}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{p}{)}
+        \PY{n}{sido\PYZus{}list} \PY{o}{=} \PY{n}{sido\PYZus{}list\PYZus{}raw}\PY{o}{.}\PY{n}{find\PYZus{}elements\PYZus{}by\PYZus{}tag\PYZus{}name}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{option}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{sido\PYZus{}names\PYZus{}values} \PY{o}{=} \PY{p}{[}\PY{n}{option}\PY{o}{.}\PY{n}{text} \PY{k}{for} \PY{n}{option} \PY{o+ow}{in} \PY{n}{sido\PYZus{}list}\PY{p}{]}
+        \PY{n}{sido\PYZus{}names\PYZus{}values} \PY{o}{=} \PY{n}{sido\PYZus{}names\PYZus{}values}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}
+        \PY{n}{sido\PYZus{}names\PYZus{}values}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} ['서울특별시',
+         '부산광역시',
+         '대구광역시',
+         '인천광역시',
+         '광주광역시',
+         '대전광역시',
+         '울산광역시',
+         '세종특별자치시',
+         '경기도',
+         '강원도',
+         '충청북도',
+         '충청남도',
+         '전라북도',
+         '전라남도',
+         '경상북도',
+         '경상남도',
+         '제주특별자치도']
+\end{Verbatim}
+            
+    \subsection{6-2. 19대 대선 개표 결과 데이터
+획득하기}\label{uxb300-uxb300uxc120-uxac1cuxd45c-uxacb0uxacfc-uxb370uxc774uxd130-uxd68duxb4dduxd558uxae30}
+
+\begin{itemize}
+\tightlist
+\item
+  위 그림이 지역을 선택하면 나타나는 화면중 하나인데 득표수에 득표율이
+  괄호()로 함께 나타납니다.
+\item
+  이를 제거하고 \textbf{(}를 기준으로 왼쪽 숫자만 얻어서, 콤마(,)를
+  제거하고, float형으로 변경하는 함수를 \textbf{get\_num}으로 준비해
+  둡니다
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{import} \PY{n+nn}{re}
+        
+        \PY{k}{def} \PY{n+nf}{get\PYZus{}num}\PY{p}{(}\PY{n}{tmp}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n+nb}{float}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{(}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{tmp}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  책에서는 특별히 다루고 있지 않지만, 아래 모듈을 import해서 wait.until
+  함수를 사용할 수 있습니다.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  이 함수는 \textbf{검색}버튼이 클릭가능할 때 까지 기다리는 기능을
+  합니다.
+\item
+  그리고 \textbf{move\_sido} 함수는 광역시도 이름을 리스트에 전송하고
+  검색 버튼을 누르는 역할을 합니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{selenium}\PY{n+nn}{.}\PY{n+nn}{webdriver}\PY{n+nn}{.}\PY{n+nn}{common}\PY{n+nn}{.}\PY{n+nn}{by} \PY{k}{import} \PY{n}{By}
+        \PY{k+kn}{from} \PY{n+nn}{selenium}\PY{n+nn}{.}\PY{n+nn}{webdriver}\PY{n+nn}{.}\PY{n+nn}{support}\PY{n+nn}{.}\PY{n+nn}{ui} \PY{k}{import} \PY{n}{WebDriverWait}
+        \PY{k+kn}{from} \PY{n+nn}{selenium}\PY{n+nn}{.}\PY{n+nn}{webdriver}\PY{n+nn}{.}\PY{n+nn}{support} \PY{k}{import} \PY{n}{expected\PYZus{}conditions} \PY{k}{as} \PY{n}{EC}
+        
+        \PY{n}{wait} \PY{o}{=} \PY{n}{WebDriverWait}\PY{p}{(}\PY{n}{driver}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{move\PYZus{}sido}\PY{p}{(}\PY{n}{name}\PY{p}{)}\PY{p}{:}
+            \PY{n}{element} \PY{o}{=} \PY{n}{driver}\PY{o}{.}\PY{n}{find\PYZus{}element\PYZus{}by\PYZus{}id}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cityCode}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{element}\PY{o}{.}\PY{n}{send\PYZus{}keys}\PY{p}{(}\PY{n}{name}\PY{p}{)}
+            \PY{n}{make\PYZus{}xpath} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}\PY{l+s+s2}{//*[@id=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{searchBtn}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{]}\PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{wait}\PY{o}{.}\PY{n}{until}\PY{p}{(}\PY{n}{EC}\PY{o}{.}\PY{n}{element\PYZus{}to\PYZus{}be\PYZus{}clickable}\PY{p}{(}\PY{p}{(}\PY{n}{By}\PY{o}{.}\PY{n}{XPATH}\PY{p}{,}\PY{n}{make\PYZus{}xpath}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+            \PY{n}{driver}\PY{o}{.}\PY{n}{find\PYZus{}element\PYZus{}by\PYZus{}xpath}\PY{p}{(}\PY{n}{make\PYZus{}xpath}\PY{p}{)}\PY{o}{.}\PY{n}{click}\PY{p}{(}\PY{p}{)} 
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  \textbf{append\_data} 함수는 빈 내용으로 미리 준비한 DataFrame에
+  append 명령으로 읽은 데이터를 하나씩 추가하는 기능입니다.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  이 함수가 실행되면 전체 투표수, 문재인후보, 홍준표후보, 안철수후보의
+  득표수가 추가됩니다
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{append\PYZus{}data}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n}{sido\PYZus{}name}\PY{p}{,} \PY{n}{data}\PY{p}{)}\PY{p}{:}
+             \PY{k}{for} \PY{n}{each} \PY{o+ow}{in} \PY{n}{df}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{:}
+                 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{sido\PYZus{}name}\PY{p}{)}
+                 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{each}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pop}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{get\PYZus{}num}\PY{p}{(}\PY{n}{each}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{get\PYZus{}num}\PY{p}{(}\PY{n}{each}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{get\PYZus{}num}\PY{p}{(}\PY{n}{each}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{get\PYZus{}num}\PY{p}{(}\PY{n}{each}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  미리 변수를 하나 만들어 둡니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{election\PYZus{}result\PYZus{}raw} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{p}{]}\PY{p}{,}
+                                \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{p}{]}\PY{p}{,}
+                                \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pop}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{p}{]}\PY{p}{,}
+                                \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{p}{]}\PY{p}{,}
+                                \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hong}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{p}{]}\PY{p}{,}    
+                                \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn}\PY{l+s+s1}{\PYZsq{}} \PY{p}{:} \PY{p}{[}\PY{p}{]} \PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+    \begin{itemize}
+\tightlist
+\item
+  교재를 집필할 때는 table로 읽는 것이 부담된다고 판단했는데, 지금은
+  형태가 바뀌어서 html 태그 중 table로 되어 있는 부분을 Beautiful
+  Soup으로 읽어서 padnas의 read\_html로 읽는 것이 더 유리합니다.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k+kn}{from} \PY{n+nn}{bs4} \PY{k}{import} \PY{n}{BeautifulSoup}
+         
+         \PY{k}{for} \PY{n}{each\PYZus{}sido} \PY{o+ow}{in} \PY{n}{sido\PYZus{}names\PYZus{}values}\PY{p}{:}
+             \PY{n}{move\PYZus{}sido}\PY{p}{(}\PY{n}{each\PYZus{}sido}\PY{p}{)}
+             
+             \PY{n}{html} \PY{o}{=} \PY{n}{driver}\PY{o}{.}\PY{n}{page\PYZus{}source}
+             \PY{n}{soup} \PY{o}{=} \PY{n}{BeautifulSoup}\PY{p}{(}\PY{n}{html}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{html.parser}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{table} \PY{o}{=} \PY{n}{soup}\PY{o}{.}\PY{n}{find}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{table}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             
+             \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}html}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{table}\PY{p}{)}\PY{p}{)}
+             
+             \PY{n}{append\PYZus{}data}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n}{each\PYZus{}sido}\PY{p}{,} \PY{n}{election\PYZus{}result\PYZus{}raw}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{election\PYZus{}result} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{election\PYZus{}result\PYZus{}raw}\PY{p}{,} 
+                                        \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pop}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{election\PYZus{}result}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:}         광역시도        시군       pop      moon     hong      ahn
+         0      서울특별시       종로구  102566.0   42512.0  22325.0  22313.0
+         1      서울특별시        중구   82852.0   34062.0  17901.0  19372.0
+         2      서울특별시       용산구  148157.0   58081.0  35230.0  32109.0
+         3      서울특별시       성동구  203175.0   86686.0  40566.0  45674.0
+         4      서울특별시       광진구  240030.0  105512.0  46368.0  52824.0
+         5      서울특별시      동대문구  236092.0   98958.0  51631.0  53359.0
+         6      서울특별시       중랑구  265706.0  111450.0  56545.0  62778.0
+         7      서울특별시       성북구  295866.0  129263.0  57584.0  66518.0
+         8      서울특별시       강북구  210614.0   89645.0  42268.0  51669.0
+         9      서울특별시       도봉구  229233.0   94898.0  47461.0  55600.0
+         10     서울특별시       노원구  374213.0  158167.0  67590.0  96325.0
+         11     서울특별시       은평구  317275.0  140180.0  60109.0  72582.0
+         12     서울특별시      서대문구  212076.0   93768.0  40513.0  46237.0
+         13     서울특별시       마포구  256992.0  117336.0  46547.0  52545.0
+         14     서울특별시       양천구  310886.0  133853.0  60814.0  71816.0
+         15     서울특별시       강서구  397108.0  175882.0  76601.0  88128.0
+         16     서울특별시       구로구  278805.0  121077.0  59194.0  61734.0
+         17     서울특별시       금천구  155010.0   67423.0  31106.0  36695.0
+         18     서울특별시      영등포구  248833.0  105834.0  53615.0  53994.0
+         19     서울특별시       동작구  276685.0  121722.0  54431.0  60305.0
+         20     서울특별시       관악구  351240.0  159854.0  59914.0  79495.0
+         21     서울특별시       서초구  292916.0  106416.0  74891.0  63977.0
+         22     서울특별시       강남구  365642.0  128927.0  97639.0  80201.0
+         23     서울특별시       송파구  441198.0  177328.0  98549.0  99018.0
+         24     서울특별시       강동구  297476.0  122511.0  65893.0  67499.0
+         25     부산광역시        중구   28604.0    9918.0  10684.0   4675.0
+         26     부산광역시        서구   71446.0   24522.0  26360.0  11868.0
+         27     부산광역시        동구   58304.0   19606.0  22188.0   9815.0
+         28     부산광역시       영도구   78013.0   30094.0  25345.0  13082.0
+         29     부산광역시      부산진구  246124.0   95042.0  79545.0  40636.0
+         ..       {\ldots}       {\ldots}       {\ldots}       {\ldots}      {\ldots}      {\ldots}
+         220     경상북도       의성군   37855.0    5365.0  23790.0   4767.0
+         221     경상북도       청송군   18418.0    3218.0  10669.0   2387.0
+         222     경상북도       영양군   12048.0    2281.0   6554.0   1701.0
+         223     경상북도       영덕군   26125.0    3786.0  16314.0   3231.0
+         224     경상북도       봉화군   22947.0    4209.0  12536.0   3370.0
+         225     경상북도       울진군   32568.0    6972.0  16867.0   4476.0
+         226     경상남도    창원시의창구  164047.0   60757.0  56887.0  22830.0
+         227     경상남도    창원시성산구  153327.0   63717.0  42052.0  22923.0
+         228     경상남도  창원시마산합포구  119281.0   35592.0  54488.0  14686.0
+         229     경상남도  창원시마산회원구  136757.0   45014.0  56340.0  17744.0
+         230     경상남도    창원시진해구  114779.0   41249.0  40049.0  17435.0
+         231     경상남도       진주시  222813.0   73929.0  93751.0  26687.0
+         232     경상남도       통영시   82855.0   25477.0  36128.0  10738.0
+         233     경상남도       고성군   34603.0    9848.0  16797.0   4104.0
+         234     경상남도       사천시   71555.0   22370.0  32475.0   8350.0
+         235     경상남도       김해시  318253.0  147972.0  82880.0  45126.0
+         236     경상남도       밀양시   70687.0   20842.0  32394.0   9073.0
+         237     경상남도       거제시  150230.0   68291.0  38775.0  20359.0
+         238     경상남도       의령군   19258.0    5115.0  10134.0   1984.0
+         239     경상남도       함안군   43866.0   13597.0  19809.0   5399.0
+         240     경상남도       창녕군   42878.0   10310.0  24464.0   3877.0
+         241     경상남도       양산시  199835.0   83412.0  58811.0  30945.0
+         242     경상남도       하동군   34324.0   11211.0  14864.0   4150.0
+         243     경상남도       남해군   30208.0    8680.0  14166.0   3906.0
+         244     경상남도       함양군   26640.0    7388.0  13008.0   3203.0
+         245     경상남도       산청군   24513.0    6561.0  12544.0   2753.0
+         246     경상남도       거창군   41325.0   11256.0  19976.0   4923.0
+         247     경상남도       합천군   33021.0    7143.0  19699.0   3077.0
+         248  제주특별자치도       제주시  273163.0  125717.0  48027.0  55971.0
+         249  제주특별자치도      서귀포시  101296.0   43776.0  20036.0  21890.0
+         
+         [250 rows x 6 columns]
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../data/05. election\PYZus{}result.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{sep}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{,}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{driver}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \subsection{6-3. 각 후보의 득표율과 지역 ID
+정리하기}\label{uxac01-uxd6c4uxbcf4uxc758-uxb4dduxd45cuxc728uxacfc-uxc9c0uxc5ed-id-uxc815uxb9acuxd558uxae30}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{election\PYZus{}result} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../data/05. election\PYZus{}result.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                      \PY{n}{index\PYZus{}col}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+        \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:}     광역시도   시군       pop      moon     hong      ahn
+        0  서울특별시  종로구  102566.0   42512.0  22325.0  22313.0
+        1  서울특별시   중구   82852.0   34062.0  17901.0  19372.0
+        2  서울특별시  용산구  148157.0   58081.0  35230.0  32109.0
+        3  서울특별시  성동구  203175.0   86686.0  40566.0  45674.0
+        4  서울특별시  광진구  240030.0  105512.0  46368.0  52824.0
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{sido\PYZus{}candi} \PY{o}{=}  \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{sido\PYZus{}candi} \PY{o}{=} \PY{p}{[}\PY{n}{name}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} \PY{k}{if} \PY{n}{name}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} 
+                                                  \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{서울}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부산}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{대구}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광주}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{인천}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{대전}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{울산}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+                                            \PY{k}{else} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}} \PY{k}{for} \PY{n}{name} \PY{o+ow}{in} \PY{n}{sido\PYZus{}candi}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{cut\PYZus{}char\PYZus{}sigu}\PY{p}{(}\PY{n}{name}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{name} \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{name}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{2} \PY{k}{else} \PY{n}{name}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{re}
+        
+        \PY{n}{sigun\PYZus{}candi} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{)}
+        
+        \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{index}\PY{p}{:}
+            \PY{n}{each} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{n}\PY{p}{]}
+            \PY{k}{if} \PY{n}{each}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} \PY{o+ow}{in} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{수원}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{성남}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{안양}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{안산}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고양}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{용인}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{청주}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{천안}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{전주}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{포항}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{창원}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{:}
+                \PY{n}{sigun\PYZus{}candi}\PY{p}{[}\PY{n}{n}\PY{p}{]} \PY{o}{=} \PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{each}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+} \PYZbs{}
+                                                                \PY{n}{cut\PYZus{}char\PYZus{}sigu}\PY{p}{(}\PY{n}{re}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{each}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{sigun\PYZus{}candi}\PY{p}{[}\PY{n}{n}\PY{p}{]} \PY{o}{=} \PY{n}{cut\PYZus{}char\PYZus{}sigu}\PY{p}{(}\PY{n}{each}\PY{p}{)}
+                
+        \PY{n}{sigun\PYZus{}candi}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} ['종로',
+         '중구',
+         '용산',
+         '성동',
+         '광진',
+         '동대문',
+         '중랑',
+         '성북',
+         '강북',
+         '도봉',
+         '노원',
+         '은평',
+         '서대문',
+         '마포',
+         '양천',
+         '강서',
+         '구로',
+         '금천',
+         '영등포',
+         '동작',
+         '관악',
+         '서초',
+         '강남',
+         '송파',
+         '강동',
+         '중구',
+         '서구',
+         '동구',
+         '영도',
+         '부산진',
+         '동래',
+         '남구',
+         '북구',
+         '해운대',
+         '기장',
+         '사하',
+         '금정',
+         '강서',
+         '연제',
+         '수영',
+         '사상',
+         '중구',
+         '동구',
+         '서구',
+         '남구',
+         '북구',
+         '수성',
+         '달서',
+         '달성',
+         '중구',
+         '동구',
+         '남구',
+         '연수',
+         '남동',
+         '부평',
+         '계양',
+         '서구',
+         '강화',
+         '옹진',
+         '동구',
+         '서구',
+         '남구',
+         '북구',
+         '광산',
+         '동구',
+         '중구',
+         '서구',
+         '유성',
+         '대덕',
+         '중구',
+         '남구',
+         '동구',
+         '북구',
+         '울주',
+         '세종특별자치',
+         '수원 장안',
+         '수원 권선',
+         '수원 팔달',
+         '수원 영통',
+         '성남 수정',
+         '성남 중원',
+         '성남 분당',
+         '의정부',
+         '안양 만안',
+         '안양 동안',
+         '부천',
+         '광명',
+         '평택',
+         '양주',
+         '동두천',
+         '안산 상록',
+         '안산 단원',
+         '고양 덕양',
+         '고양 일산동',
+         '고양 일산서',
+         '과천',
+         '의왕',
+         '구리',
+         '남양주',
+         '오산',
+         '화성',
+         '시흥',
+         '군포',
+         '하남',
+         '파주',
+         '여주',
+         '이천',
+         '용인 처인',
+         '용인 수지',
+         '용인 기흥',
+         '안성',
+         '김포',
+         '광주',
+         '포천',
+         '연천',
+         '양평',
+         '가평',
+         '춘천',
+         '원주',
+         '강릉',
+         '동해',
+         '삼척',
+         '태백',
+         '정선',
+         '속초',
+         '고성',
+         '양양',
+         '인제',
+         '홍천',
+         '횡성',
+         '영월',
+         '평창',
+         '화천',
+         '양구',
+         '철원',
+         '청주 상당',
+         '청주 서원',
+         '청주 흥덕',
+         '청주 청원',
+         '충주',
+         '제천',
+         '단양',
+         '영동',
+         '보은',
+         '옥천',
+         '음성',
+         '진천',
+         '괴산',
+         '증평',
+         '천안 서북',
+         '천안 동남',
+         '공주',
+         '보령',
+         '아산',
+         '서산',
+         '태안',
+         '금산',
+         '논산',
+         '계룡',
+         '당진',
+         '부여',
+         '서천',
+         '홍성',
+         '청양',
+         '예산',
+         '전주 완산',
+         '전주 덕진',
+         '군산',
+         '익산',
+         '정읍',
+         '남원',
+         '김제',
+         '완주',
+         '진안',
+         '무주',
+         '장수',
+         '임실',
+         '순창',
+         '고창',
+         '부안',
+         '목포',
+         '여수',
+         '순천',
+         '나주',
+         '광양',
+         '담양',
+         '장성',
+         '곡성',
+         '구례',
+         '고흥',
+         '보성',
+         '화순',
+         '장흥',
+         '강진',
+         '완도',
+         '해남',
+         '진도',
+         '영암',
+         '무안',
+         '영광',
+         '함평',
+         '신안',
+         '포항 북구',
+         '포항 남구',
+         '울릉',
+         '경주',
+         '김천',
+         '안동',
+         '구미',
+         '영주',
+         '영천',
+         '상주',
+         '문경',
+         '예천',
+         '경산',
+         '청도',
+         '고령',
+         '성주',
+         '칠곡',
+         '군위',
+         '의성',
+         '청송',
+         '영양',
+         '영덕',
+         '봉화',
+         '울진',
+         '창원 의창',
+         '창원 성산',
+         '창원 마산합포',
+         '창원 마산회원',
+         '창원 진해',
+         '진주',
+         '통영',
+         '고성',
+         '사천',
+         '김해',
+         '밀양',
+         '거제',
+         '의령',
+         '함안',
+         '창녕',
+         '양산',
+         '하동',
+         '남해',
+         '함양',
+         '산청',
+         '거창',
+         '합천',
+         '제주',
+         '서귀포']
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{ID\PYZus{}candi} \PY{o}{=} \PY{p}{[}\PY{n}{sido\PYZus{}candi}\PY{p}{[}\PY{n}{n}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{sigun\PYZus{}candi}\PY{p}{[}\PY{n}{n}\PY{p}{]} \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{sigun\PYZus{}candi}\PY{p}{)}\PY{p}{)}\PY{p}{]}
+        
+        \PY{n}{ID\PYZus{}candi} \PY{o}{=} \PY{p}{[}\PY{n}{name}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]} \PY{k}{if} \PY{n}{name}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}} \PY{k}{else} \PY{n}{name} \PY{k}{for} \PY{n}{name} \PY{o+ow}{in} \PY{n}{ID\PYZus{}candi}\PY{p}{]}
+        \PY{n}{ID\PYZus{}candi} \PY{o}{=} \PY{p}{[}\PY{n}{name}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]} \PY{k}{if} \PY{n}{name}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{세종}\PY{l+s+s1}{\PYZsq{}} \PY{k}{else} \PY{n}{name} \PY{k}{for} \PY{n}{name} \PY{o+ow}{in} \PY{n}{ID\PYZus{}candi}\PY{p}{]}
+        
+        \PY{n}{ID\PYZus{}candi}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} ['서울 종로',
+         '서울 중구',
+         '서울 용산',
+         '서울 성동',
+         '서울 광진',
+         '서울 동대문',
+         '서울 중랑',
+         '서울 성북',
+         '서울 강북',
+         '서울 도봉',
+         '서울 노원',
+         '서울 은평',
+         '서울 서대문',
+         '서울 마포',
+         '서울 양천',
+         '서울 강서',
+         '서울 구로',
+         '서울 금천',
+         '서울 영등포',
+         '서울 동작',
+         '서울 관악',
+         '서울 서초',
+         '서울 강남',
+         '서울 송파',
+         '서울 강동',
+         '부산 중구',
+         '부산 서구',
+         '부산 동구',
+         '부산 영도',
+         '부산 부산진',
+         '부산 동래',
+         '부산 남구',
+         '부산 북구',
+         '부산 해운대',
+         '부산 기장',
+         '부산 사하',
+         '부산 금정',
+         '부산 강서',
+         '부산 연제',
+         '부산 수영',
+         '부산 사상',
+         '대구 중구',
+         '대구 동구',
+         '대구 서구',
+         '대구 남구',
+         '대구 북구',
+         '대구 수성',
+         '대구 달서',
+         '대구 달성',
+         '인천 중구',
+         '인천 동구',
+         '인천 남구',
+         '인천 연수',
+         '인천 남동',
+         '인천 부평',
+         '인천 계양',
+         '인천 서구',
+         '인천 강화',
+         '인천 옹진',
+         '광주 동구',
+         '광주 서구',
+         '광주 남구',
+         '광주 북구',
+         '광주 광산',
+         '대전 동구',
+         '대전 중구',
+         '대전 서구',
+         '대전 유성',
+         '대전 대덕',
+         '울산 중구',
+         '울산 남구',
+         '울산 동구',
+         '울산 북구',
+         '울산 울주',
+         '세종',
+         '수원 장안',
+         '수원 권선',
+         '수원 팔달',
+         '수원 영통',
+         '성남 수정',
+         '성남 중원',
+         '성남 분당',
+         '의정부',
+         '안양 만안',
+         '안양 동안',
+         '부천',
+         '광명',
+         '평택',
+         '양주',
+         '동두천',
+         '안산 상록',
+         '안산 단원',
+         '고양 덕양',
+         '고양 일산동',
+         '고양 일산서',
+         '과천',
+         '의왕',
+         '구리',
+         '남양주',
+         '오산',
+         '화성',
+         '시흥',
+         '군포',
+         '하남',
+         '파주',
+         '여주',
+         '이천',
+         '용인 처인',
+         '용인 수지',
+         '용인 기흥',
+         '안성',
+         '김포',
+         '광주',
+         '포천',
+         '연천',
+         '양평',
+         '가평',
+         '춘천',
+         '원주',
+         '강릉',
+         '동해',
+         '삼척',
+         '태백',
+         '정선',
+         '속초',
+         '고성',
+         '양양',
+         '인제',
+         '홍천',
+         '횡성',
+         '영월',
+         '평창',
+         '화천',
+         '양구',
+         '철원',
+         '청주 상당',
+         '청주 서원',
+         '청주 흥덕',
+         '청주 청원',
+         '충주',
+         '제천',
+         '단양',
+         '영동',
+         '보은',
+         '옥천',
+         '음성',
+         '진천',
+         '괴산',
+         '증평',
+         '천안 서북',
+         '천안 동남',
+         '공주',
+         '보령',
+         '아산',
+         '서산',
+         '태안',
+         '금산',
+         '논산',
+         '계룡',
+         '당진',
+         '부여',
+         '서천',
+         '홍성',
+         '청양',
+         '예산',
+         '전주 완산',
+         '전주 덕진',
+         '군산',
+         '익산',
+         '정읍',
+         '남원',
+         '김제',
+         '완주',
+         '진안',
+         '무주',
+         '장수',
+         '임실',
+         '순창',
+         '고창',
+         '부안',
+         '목포',
+         '여수',
+         '순천',
+         '나주',
+         '광양',
+         '담양',
+         '장성',
+         '곡성',
+         '구례',
+         '고흥',
+         '보성',
+         '화순',
+         '장흥',
+         '강진',
+         '완도',
+         '해남',
+         '진도',
+         '영암',
+         '무안',
+         '영광',
+         '함평',
+         '신안',
+         '포항 북구',
+         '포항 남구',
+         '울릉',
+         '경주',
+         '김천',
+         '안동',
+         '구미',
+         '영주',
+         '영천',
+         '상주',
+         '문경',
+         '예천',
+         '경산',
+         '청도',
+         '고령',
+         '성주',
+         '칠곡',
+         '군위',
+         '의성',
+         '청송',
+         '영양',
+         '영덕',
+         '봉화',
+         '울진',
+         '창원 의창',
+         '창원 성산',
+         '창원 마산합포',
+         '창원 마산회원',
+         '창원 진해',
+         '진주',
+         '통영',
+         '고성',
+         '사천',
+         '김해',
+         '밀양',
+         '거제',
+         '의령',
+         '함안',
+         '창녕',
+         '양산',
+         '하동',
+         '남해',
+         '함양',
+         '산청',
+         '거창',
+         '합천',
+         '제주',
+         '서귀포']
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{ID\PYZus{}candi}
+        \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:}     광역시도    시군       pop      moon     hong      ahn      ID
+        0  서울특별시   종로구  102566.0   42512.0  22325.0  22313.0   서울 종로
+        1  서울특별시    중구   82852.0   34062.0  17901.0  19372.0   서울 중구
+        2  서울특별시   용산구  148157.0   58081.0  35230.0  32109.0   서울 용산
+        3  서울특별시   성동구  203175.0   86686.0  40566.0  45674.0   서울 성동
+        4  서울특별시   광진구  240030.0  105512.0  46368.0  52824.0   서울 광진
+        5  서울특별시  동대문구  236092.0   98958.0  51631.0  53359.0  서울 동대문
+        6  서울특별시   중랑구  265706.0  111450.0  56545.0  62778.0   서울 중랑
+        7  서울특별시   성북구  295866.0  129263.0  57584.0  66518.0   서울 성북
+        8  서울특별시   강북구  210614.0   89645.0  42268.0  51669.0   서울 강북
+        9  서울특별시   도봉구  229233.0   94898.0  47461.0  55600.0   서울 도봉
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]} \PY{o}{=} \PYZbs{}
+                    \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{div}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pop}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}  \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+        \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]} \PY{o}{*}\PY{o}{=} \PY{l+m+mi}{100}
+        \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:}     광역시도   시군       pop      moon     hong      ahn     ID  rate\_moon  \textbackslash{}
+        0  서울특별시  종로구  102566.0   42512.0  22325.0  22313.0  서울 종로  41.448433   
+        1  서울특별시   중구   82852.0   34062.0  17901.0  19372.0  서울 중구  41.111862   
+        2  서울특별시  용산구  148157.0   58081.0  35230.0  32109.0  서울 용산  39.202333   
+        3  서울특별시  성동구  203175.0   86686.0  40566.0  45674.0  서울 성동  42.665682   
+        4  서울특별시  광진구  240030.0  105512.0  46368.0  52824.0  서울 광진  43.957839   
+        
+           rate\_hong   rate\_ahn  
+        0  21.766472  21.754773  
+        1  21.605996  23.381451  
+        2  23.778829  21.672280  
+        3  19.966039  22.480128  
+        4  19.317585  22.007249  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{k+kc}{False}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:}       광역시도      시군       pop      moon    hong      ahn     ID  rate\_moon  \textbackslash{}
+        182   전라남도     순천시  181451.0  122595.0  4525.0  40429.0     순천  67.563695   
+        166   전라북도  전주시덕진구  187921.0  125375.0  5183.0  40188.0  전주 덕진  66.716865   
+        165   전라북도  전주시완산구  236383.0  157637.0  7003.0  50506.0  전주 완산  66.687114   
+        175   전라북도     장수군   16079.0   10714.0   717.0   3353.0     장수  66.633497   
+        184   전라남도     광양시   96384.0   63544.0  4100.0  20080.0     광양  65.927955   
+        173   전라북도     진안군   18107.0   11918.0   819.0   3904.0     진안  65.819849   
+        172   전라북도     완주군   62470.0   41057.0  2107.0  13897.0     완주  65.722747   
+        168   전라북도     익산시  192208.0  123422.0  6470.0  45737.0     익산  64.212728   
+        170   전라북도     남원시   55371.0   35539.0  1939.0  13854.0     남원  64.183417   
+        63   광주광역시     광산구  248209.0  159119.0  3630.0  65402.0  광주 광산  64.106862   
+        
+             rate\_hong   rate\_ahn  
+        182   2.493786  22.280946  
+        166   2.758074  21.385582  
+        165   2.962565  21.366173  
+        175   4.459233  20.853287  
+        184   4.253818  20.833333  
+        173   4.523113  21.560722  
+        172   3.372819  22.245878  
+        168   3.366145  23.795576  
+        170   3.501833  25.020317  
+        63    1.462477  26.349568  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{k+kc}{False}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:}      광역시도   시군      pop     moon     hong     ahn  ID  rate\_moon  rate\_hong  \textbackslash{}
+         219  경상북도  군위군  17627.0   2251.0  11651.0  1939.0  군위  12.770182  66.097464   
+         220  경상북도  의성군  37855.0   5365.0  23790.0  4767.0  의성  14.172500  62.845067   
+         223  경상북도  영덕군  26125.0   3786.0  16314.0  3231.0  영덕  14.491866  62.445933   
+         247  경상남도  합천군  33021.0   7143.0  19699.0  3077.0  합천  21.631689  59.655976   
+         216  경상북도  고령군  22396.0   3754.0  13248.0  2600.0  고령  16.761922  59.153420   
+         213  경상북도  예천군  32124.0   5261.0  18863.0  4427.0  예천  16.377163  58.719338   
+         215  경상북도  청도군  30398.0   5323.0  17678.0  3654.0  청도  17.511020  58.155142   
+         221  경상북도  청송군  18418.0   3218.0  10669.0  2387.0  청송  17.472038  57.927028   
+         240  경상남도  창녕군  42878.0  10310.0  24464.0  3877.0  창녕  24.044965  57.054900   
+         212  경상북도  문경시  49113.0   8616.0  27832.0  6905.0  문경  17.543217  56.669314   
+         
+               rate\_ahn  
+         219  11.000170  
+         220  12.592788  
+         223  12.367464  
+         247   9.318313  
+         216  11.609216  
+         213  13.780974  
+         215  12.020528  
+         221  12.960148  
+         240   9.041933  
+         212  14.059414  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{k+kc}{False}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:}       광역시도   시군       pop     moon    hong      ahn     ID  rate\_moon  \textbackslash{}
+         196   전라남도  진도군   21189.0  10392.0   511.0   8855.0     진도  49.044315   
+         201   전라남도  신안군   28950.0  14370.0   713.0  12000.0     신안  49.637306   
+         193   전라남도  강진군   25175.0  12476.0   753.0  10152.0     강진  49.557100   
+         195   전라남도  해남군   48351.0  25901.0  1158.0  18157.0     해남  53.568696   
+         197   전라남도  영암군   36402.0  18999.0   825.0  13610.0     영암  52.192187   
+         180   전라남도  목포시  145476.0  77896.0  2584.0  53303.0     목포  53.545602   
+         59   광주광역시   동구   66287.0  37053.0  1308.0  23438.0  광주 동구  55.897838   
+         192   전라남도  장흥군   27149.0  14821.0   636.0   9593.0     장흥  54.591329   
+         190   전라남도  보성군   29967.0  16666.0   732.0  10514.0     보성  55.614509   
+         198   전라남도  무안군   52516.0  29516.0   983.0  18052.0     무안  56.203824   
+         
+              rate\_hong   rate\_ahn  
+         196   2.411629  41.790552  
+         201   2.462867  41.450777  
+         193   2.991063  40.325720  
+         195   2.394987  37.552481  
+         197   2.266359  37.388056  
+         180   1.776238  36.640408  
+         59    1.973238  35.358366  
+         192   2.342628  35.334635  
+         190   2.442687  35.085260  
+         198   1.871810  34.374286  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{draw\PYZus{}korea} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../data/05. draw\PYZus{}korea.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                                                                                          \PY{n}{index\PYZus{}col}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{draw\PYZus{}korea}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:}    y   x      ID
+         0  0   7      철원
+         1  0   8      화천
+         2  0   9      양구
+         3  0  10  고성(강원)
+         4  1   3      양주
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n+nb}{set}\PY{p}{(}\PY{n}{draw\PYZus{}korea}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} \{'고성(강원)', '고성(경남)', '부천 소사', '부천 오정', '부천 원미', '창원 합포', '창원 회원'\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n+nb}{set}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{draw\PYZus{}korea}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} \{'고성', '부천', '창원 마산합포', '창원 마산회원'\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고성}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:}      광역시도   시군      pop    moon     hong     ahn  ID  rate\_moon  rate\_hong  \textbackslash{}
+         125   강원도  고성군  18692.0  5664.0   6511.0  3964.0  고성  30.301733  34.833084   
+         233  경상남도  고성군  34603.0  9848.0  16797.0  4104.0  고성  28.459960  48.542034   
+         
+               rate\_ahn  
+         125  21.206933  
+         233  11.860243  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{125}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고성(강원)}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{233}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고성(경남)}\PY{l+s+s1}{\PYZsq{}}
+         
+         \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고성군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:}      광역시도   시군      pop    moon     hong     ahn      ID  rate\_moon  \textbackslash{}
+         125   강원도  고성군  18692.0  5664.0   6511.0  3964.0  고성(강원)  30.301733   
+         233  경상남도  고성군  34603.0  9848.0  16797.0  4104.0  고성(경남)  28.459960   
+         
+              rate\_hong   rate\_ahn  
+         125  34.833084  21.206933  
+         233  48.542034  11.860243  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{경상남도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:}      광역시도        시군       pop      moon     hong      ahn       ID  rate\_moon  \textbackslash{}
+         226  경상남도    창원시의창구  164047.0   60757.0  56887.0  22830.0    창원 의창  37.036337   
+         227  경상남도    창원시성산구  153327.0   63717.0  42052.0  22923.0    창원 성산  41.556282   
+         228  경상남도  창원시마산합포구  119281.0   35592.0  54488.0  14686.0  창원 마산합포  29.838784   
+         229  경상남도  창원시마산회원구  136757.0   45014.0  56340.0  17744.0  창원 마산회원  32.915317   
+         230  경상남도    창원시진해구  114779.0   41249.0  40049.0  17435.0    창원 진해  35.937759   
+         231  경상남도       진주시  222813.0   73929.0  93751.0  26687.0       진주  33.179841   
+         232  경상남도       통영시   82855.0   25477.0  36128.0  10738.0       통영  30.748899   
+         233  경상남도       고성군   34603.0    9848.0  16797.0   4104.0   고성(경남)  28.459960   
+         234  경상남도       사천시   71555.0   22370.0  32475.0   8350.0       사천  31.262665   
+         235  경상남도       김해시  318253.0  147972.0  82880.0  45126.0       김해  46.495084   
+         236  경상남도       밀양시   70687.0   20842.0  32394.0   9073.0       밀양  29.484912   
+         237  경상남도       거제시  150230.0   68291.0  38775.0  20359.0       거제  45.457632   
+         238  경상남도       의령군   19258.0    5115.0  10134.0   1984.0       의령  26.560390   
+         239  경상남도       함안군   43866.0   13597.0  19809.0   5399.0       함안  30.996672   
+         240  경상남도       창녕군   42878.0   10310.0  24464.0   3877.0       창녕  24.044965   
+         241  경상남도       양산시  199835.0   83412.0  58811.0  30945.0       양산  41.740436   
+         242  경상남도       하동군   34324.0   11211.0  14864.0   4150.0       하동  32.662277   
+         243  경상남도       남해군   30208.0    8680.0  14166.0   3906.0       남해  28.734110   
+         244  경상남도       함양군   26640.0    7388.0  13008.0   3203.0       함양  27.732733   
+         245  경상남도       산청군   24513.0    6561.0  12544.0   2753.0       산청  26.765390   
+         246  경상남도       거창군   41325.0   11256.0  19976.0   4923.0       거창  27.237750   
+         247  경상남도       합천군   33021.0    7143.0  19699.0   3077.0       합천  21.631689   
+         
+              rate\_hong   rate\_ahn  
+         226  34.677257  13.916743  
+         227  27.426350  14.950400  
+         228  45.680368  12.312103  
+         229  41.197160  12.974839  
+         230  34.892271  15.190061  
+         231  42.076091  11.977308  
+         232  43.603886  12.959990  
+         233  48.542034  11.860243  
+         234  45.384669  11.669345  
+         235  26.042174  14.179285  
+         236  45.827380  12.835458  
+         237  25.810424  13.551887  
+         238  52.622287  10.302212  
+         239  45.157981  12.307938  
+         240  57.054900   9.041933  
+         241  29.429780  15.485275  
+         242  43.304976  12.090665  
+         243  46.894862  12.930350  
+         244  48.828829  12.023273  
+         245  51.172847  11.230776  
+         246  48.338778  11.912886  
+         247  59.655976   9.318313  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{228}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{창원 합포}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{229}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{창원 회원}\PY{l+s+s1}{\PYZsq{}}
+         
+         \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{경상남도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:}      광역시도        시군       pop      moon     hong      ahn      ID  rate\_moon  \textbackslash{}
+         226  경상남도    창원시의창구  164047.0   60757.0  56887.0  22830.0   창원 의창  37.036337   
+         227  경상남도    창원시성산구  153327.0   63717.0  42052.0  22923.0   창원 성산  41.556282   
+         228  경상남도  창원시마산합포구  119281.0   35592.0  54488.0  14686.0   창원 합포  29.838784   
+         229  경상남도  창원시마산회원구  136757.0   45014.0  56340.0  17744.0   창원 회원  32.915317   
+         230  경상남도    창원시진해구  114779.0   41249.0  40049.0  17435.0   창원 진해  35.937759   
+         231  경상남도       진주시  222813.0   73929.0  93751.0  26687.0      진주  33.179841   
+         232  경상남도       통영시   82855.0   25477.0  36128.0  10738.0      통영  30.748899   
+         233  경상남도       고성군   34603.0    9848.0  16797.0   4104.0  고성(경남)  28.459960   
+         234  경상남도       사천시   71555.0   22370.0  32475.0   8350.0      사천  31.262665   
+         235  경상남도       김해시  318253.0  147972.0  82880.0  45126.0      김해  46.495084   
+         236  경상남도       밀양시   70687.0   20842.0  32394.0   9073.0      밀양  29.484912   
+         237  경상남도       거제시  150230.0   68291.0  38775.0  20359.0      거제  45.457632   
+         238  경상남도       의령군   19258.0    5115.0  10134.0   1984.0      의령  26.560390   
+         239  경상남도       함안군   43866.0   13597.0  19809.0   5399.0      함안  30.996672   
+         240  경상남도       창녕군   42878.0   10310.0  24464.0   3877.0      창녕  24.044965   
+         241  경상남도       양산시  199835.0   83412.0  58811.0  30945.0      양산  41.740436   
+         242  경상남도       하동군   34324.0   11211.0  14864.0   4150.0      하동  32.662277   
+         243  경상남도       남해군   30208.0    8680.0  14166.0   3906.0      남해  28.734110   
+         244  경상남도       함양군   26640.0    7388.0  13008.0   3203.0      함양  27.732733   
+         245  경상남도       산청군   24513.0    6561.0  12544.0   2753.0      산청  26.765390   
+         246  경상남도       거창군   41325.0   11256.0  19976.0   4923.0      거창  27.237750   
+         247  경상남도       합천군   33021.0    7143.0  19699.0   3077.0      합천  21.631689   
+         
+              rate\_hong   rate\_ahn  
+         226  34.677257  13.916743  
+         227  27.426350  14.950400  
+         228  45.680368  12.312103  
+         229  41.197160  12.974839  
+         230  34.892271  15.190061  
+         231  42.076091  11.977308  
+         232  43.603886  12.959990  
+         233  48.542034  11.860243  
+         234  45.384669  11.669345  
+         235  26.042174  14.179285  
+         236  45.827380  12.835458  
+         237  25.810424  13.551887  
+         238  52.622287  10.302212  
+         239  45.157981  12.307938  
+         240  57.054900   9.041933  
+         241  29.429780  15.485275  
+         242  43.304976  12.090665  
+         243  46.894862  12.930350  
+         244  48.828829  12.023273  
+         245  51.172847  11.230776  
+         246  48.338778  11.912886  
+         247  59.655976   9.318313  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n+nb}{set}\PY{p}{(}\PY{n}{draw\PYZus{}korea}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}19}]:} \{'부천 소사', '부천 오정', '부천 원미'\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n+nb}{set}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{draw\PYZus{}korea}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} \{'부천'\}
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}21}]:}    광역시도   시군       pop      moon      hong       ahn  ID  rate\_moon  \textbackslash{}
+         85  경기도  부천시  543777.0  239697.0  100544.0  128297.0  부천  44.080018   
+         
+             rate\_hong   rate\_ahn  
+         85  18.489932  23.593679  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}22}]:}         광역시도    시군       pop      moon     hong      ahn   ID  rate\_moon  \textbackslash{}
+         245     경상남도   산청군   24513.0    6561.0  12544.0   2753.0   산청  26.765390   
+         246     경상남도   거창군   41325.0   11256.0  19976.0   4923.0   거창  27.237750   
+         247     경상남도   합천군   33021.0    7143.0  19699.0   3077.0   합천  21.631689   
+         248  제주특별자치도   제주시  273163.0  125717.0  48027.0  55971.0   제주  46.022704   
+         249  제주특별자치도  서귀포시  101296.0   43776.0  20036.0  21890.0  서귀포  43.215922   
+         
+              rate\_hong   rate\_ahn  
+         245  51.172847  11.230776  
+         246  48.338778  11.912886  
+         247  59.655976   9.318313  
+         248  17.581810  20.489964  
+         249  19.779656  21.609935  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{ahn\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{/}\PY{l+m+mi}{3}
+         \PY{n}{hong\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{/}\PY{l+m+mi}{3}
+         \PY{n}{moon\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{/}\PY{l+m+mi}{3}
+         \PY{n}{pop\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pop}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{/}\PY{l+m+mi}{3}
+         
+         \PY{n}{rate\PYZus{}moon\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{rate\PYZus{}hong\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{rate\PYZus{}ahn\PYZus{}tmp} \PY{o}{=} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         
+         \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{250}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{ahn\PYZus{}tmp}\PY{p}{,} \PY{n}{hong\PYZus{}tmp}\PY{p}{,} \PY{n}{moon\PYZus{}tmp}\PY{p}{,} \PY{n}{pop\PYZus{}tmp}\PY{p}{,} 
+                                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{경기도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천 소사}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                    \PY{n}{rate\PYZus{}moon\PYZus{}tmp}\PY{p}{,} \PY{n}{rate\PYZus{}hong\PYZus{}tmp}\PY{p}{,} \PY{n}{rate\PYZus{}ahn\PYZus{}tmp}\PY{p}{]}
+         \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{251}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{ahn\PYZus{}tmp}\PY{p}{,} \PY{n}{hong\PYZus{}tmp}\PY{p}{,} \PY{n}{moon\PYZus{}tmp}\PY{p}{,} \PY{n}{pop\PYZus{}tmp}\PY{p}{,} 
+                                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{경기도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천 오정}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                    \PY{n}{rate\PYZus{}moon\PYZus{}tmp}\PY{p}{,} \PY{n}{rate\PYZus{}hong\PYZus{}tmp}\PY{p}{,} \PY{n}{rate\PYZus{}ahn\PYZus{}tmp}\PY{p}{]}
+         \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{252}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{ahn\PYZus{}tmp}\PY{p}{,} \PY{n}{hong\PYZus{}tmp}\PY{p}{,} \PY{n}{moon\PYZus{}tmp}\PY{p}{,} \PY{n}{pop\PYZus{}tmp}\PY{p}{,} 
+                                    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{경기도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천 원미}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} 
+                                    \PY{n}{rate\PYZus{}moon\PYZus{}tmp}\PY{p}{,} \PY{n}{rate\PYZus{}hong\PYZus{}tmp}\PY{p}{,} \PY{n}{rate\PYZus{}ahn\PYZus{}tmp}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:}    광역시도   시군       pop      moon    hong     ahn  ID  rate\_moon  rate\_hong  \textbackslash{}
+         85  경기도  부천시  543777.0  239697.0  100544  128297  부천  44.080018  18.489932   
+         
+              rate\_ahn  
+         85  23.593679  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{election\PYZus{}result}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{85}\PY{p}{]}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{n}{election\PYZus{}result}\PY{p}{[}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{부천시}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} Empty DataFrame
+         Columns: [광역시도, 시군, pop, moon, hong, ahn, ID, rate\_moon, rate\_hong, rate\_ahn]
+         Index: []
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n+nb}{set}\PY{p}{(}\PY{n}{draw\PYZus{}korea}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:} set()
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n+nb}{set}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n+nb}{set}\PY{p}{(}\PY{n}{draw\PYZus{}korea}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} set()
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{final\PYZus{}elect\PYZus{}data} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{merge}\PY{p}{(}\PY{n}{election\PYZus{}result}\PY{p}{,} \PY{n}{draw\PYZus{}korea}\PY{p}{,} \PY{n}{how}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{on}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:}     광역시도   시군       pop      moon   hong    ahn     ID  rate\_moon  rate\_hong  \textbackslash{}
+         0  서울특별시  종로구  102566.0   42512.0  22325  22313  서울 종로  41.448433  21.766472   
+         1  서울특별시   중구   82852.0   34062.0  17901  19372  서울 중구  41.111862  21.605996   
+         2  서울특별시  용산구  148157.0   58081.0  35230  32109  서울 용산  39.202333  23.778829   
+         3  서울특별시  성동구  203175.0   86686.0  40566  45674  서울 성동  42.665682  19.966039   
+         4  서울특별시  광진구  240030.0  105512.0  46368  52824  서울 광진  43.957839  19.317585   
+         
+             rate\_ahn  y  x  
+         0  21.754773  4  6  
+         1  23.381451  5  6  
+         2  21.672280  6  6  
+         3  22.480128  5  7  
+         4  22.007249  6  7  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PYZbs{}
+                                                                         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}moon}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PYZbs{}
+                                                                         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PYZbs{}
+                                                                         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rate\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:}     광역시도   시군       pop      moon   hong    ahn     ID  rate\_moon  rate\_hong  \textbackslash{}
+         0  서울특별시  종로구  102566.0   42512.0  22325  22313  서울 종로  41.448433  21.766472   
+         1  서울특별시   중구   82852.0   34062.0  17901  19372  서울 중구  41.111862  21.605996   
+         2  서울특별시  용산구  148157.0   58081.0  35230  32109  서울 용산  39.202333  23.778829   
+         3  서울특별시  성동구  203175.0   86686.0  40566  45674  서울 성동  42.665682  19.966039   
+         4  서울특별시  광진구  240030.0  105512.0  46368  52824  서울 광진  43.957839  19.317585   
+         
+             rate\_ahn  y  x  moon\_vs\_hong  moon\_vs\_ahn  ahn\_vs\_hong  
+         0  21.754773  4  6     19.681961    19.693661    -0.011700  
+         1  23.381451  5  6     19.505866    17.730411     1.775455  
+         2  21.672280  6  6     15.423503    17.530053    -2.106549  
+         3  22.480128  5  7     22.699643    20.185554     2.514089  
+         4  22.007249  6  7     24.640253    21.950590     2.689664  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{k+kc}{False}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:}       광역시도      시군       pop      moon  hong    ahn     ID  rate\_moon  \textbackslash{}
+         181   전라남도     순천시  181451.0  122595.0  4525  40429     순천  67.563695   
+         165   전라북도  전주시덕진구  187921.0  125375.0  5183  40188  전주 덕진  66.716865   
+         164   전라북도  전주시완산구  236383.0  157637.0  7003  50506  전주 완산  66.687114   
+         63   광주광역시     광산구  248209.0  159119.0  3630  65402  광주 광산  64.106862   
+         171   전라북도     완주군   62470.0   41057.0  2107  13897     완주  65.722747   
+         174   전라북도     장수군   16079.0   10714.0   717   3353     장수  66.633497   
+         183   전라남도     광양시   96384.0   63544.0  4100  20080     광양  65.927955   
+         172   전라북도     진안군   18107.0   11918.0   819   3904     진안  65.819849   
+         180   전라남도     여수시  185487.0  117586.0  4281  50228     여수  63.393122   
+         167   전라북도     익산시  192208.0  123422.0  6470  45737     익산  64.212728   
+         
+              rate\_hong   rate\_ahn   y  x  moon\_vs\_hong  moon\_vs\_ahn  ahn\_vs\_hong  
+         181   2.493786  22.280946  22  4     65.069909    45.282749    19.787160  
+         165   2.758074  21.385582  18  3     63.958791    45.331283    18.627508  
+         164   2.962565  21.366173  19  3     63.724549    45.320941    18.403608  
+         63    1.462477  26.349568  21  2     62.644384    37.757293    24.887091  
+         171   3.372819  22.245878  17  4     62.349928    43.476869    18.873059  
+         174   4.459233  20.853287  17  5     62.174265    45.780210    16.394054  
+         183   4.253818  20.833333  21  5     61.674137    45.094622    16.579515  
+         172   4.523113  21.560722  18  4     61.296736    44.259126    17.037610  
+         180   2.307978  27.078987  23  4     61.085143    36.314135    24.771008  
+         167   3.366145  23.795576  16  3     60.846583    40.417152    20.429431  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{p}{[}\PY{k+kc}{True}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:}      광역시도   시군      pop     moon   hong   ahn  ID  rate\_moon  rate\_hong  \textbackslash{}
+         218  경상북도  군위군  17627.0   2251.0  11651  1939  군위  12.770182  66.097464   
+         219  경상북도  의성군  37855.0   5365.0  23790  4767  의성  14.172500  62.845067   
+         222  경상북도  영덕군  26125.0   3786.0  16314  3231  영덕  14.491866  62.445933   
+         215  경상북도  고령군  22396.0   3754.0  13248  2600  고령  16.761922  59.153420   
+         212  경상북도  예천군  32124.0   5261.0  18863  4427  예천  16.377163  58.719338   
+         214  경상북도  청도군  30398.0   5323.0  17678  3654  청도  17.511020  58.155142   
+         220  경상북도  청송군  18418.0   3218.0  10669  2387  청송  17.472038  57.927028   
+         211  경상북도  문경시  49113.0   8616.0  27832  6905  문경  17.543217  56.669314   
+         210  경상북도  상주시  67717.0  12356.0  38171  9392  상주  18.246526  56.368416   
+         246  경상남도  합천군  33021.0   7143.0  19699  3077  합천  21.631689  59.655976   
+         
+               rate\_ahn   y   x  moon\_vs\_hong  moon\_vs\_ahn  ahn\_vs\_hong  
+         218  11.000170  11  10    -53.327282     1.770012   -55.097294  
+         219  12.592788  11  11    -48.672566     1.579712   -50.252278  
+         222  12.367464   7  11    -47.954067     2.124402   -50.078469  
+         215  11.609216  13   9    -42.391498     5.152706   -47.544204  
+         212  13.780974  10   8    -42.342174     2.596190   -44.938364  
+         214  12.020528  13  10    -40.644121     5.490493   -46.134614  
+         220  12.960148  10  11    -40.454990     4.511891   -44.966880  
+         211  14.059414   8  10    -39.126097     3.483803   -42.609900  
+         210  13.869486  11   8    -38.121890     4.377040   -42.498929  
+         246   9.318313  16   7    -38.024288    12.313376   -50.337664  
+\end{Verbatim}
+            
+    \subsection{6-4. 19대 대선 결과 특표율
+시각화하기}\label{uxb300-uxb300uxc120-uxacb0uxacfc-uxd2b9uxd45cuxc728-uxc2dcuxac01uxd654uxd558uxae30}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{BORDER\PYZus{}LINES} \PY{o}{=} \PY{p}{[}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 인천}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} 
+              \PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 서울}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} 
+              \PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} 
+              \PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 경기도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 강원도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} 
+              \PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 충청북도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{19}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} 
+              \PY{p}{(}\PY{l+m+mi}{19}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{19}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{19}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 전라북도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{} 대전시}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}세종시}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{22}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{22}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{24}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{24}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}광주}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{23}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}전라남도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}충청북도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{12}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,}\PY{l+m+mi}{13}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}경상북도}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}대구}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{19}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{19}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{21}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}부산}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{11}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,}\PY{l+m+mi}{13}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{c+c1}{\PYZsh{}울산}
+             \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{27}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{27}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{]}\PY{p}{,}
+         \PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{k}{def} \PY{n+nf}{drawKorea}\PY{p}{(}\PY{n}{targetData}\PY{p}{,} \PY{n}{blockedMap}\PY{p}{,} \PY{n}{cmapname}\PY{p}{)}\PY{p}{:}
+             \PY{n}{gamma} \PY{o}{=} \PY{l+m+mf}{0.75}
+         
+             \PY{n}{whitelabelmin} \PY{o}{=} \PY{l+m+mf}{20.}
+         
+             \PY{n}{datalabel} \PY{o}{=} \PY{n}{targetData}
+         
+             \PY{n}{tmp\PYZus{}max} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{p}{[} \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n+nb}{min}\PY{p}{(}\PY{n}{blockedMap}\PY{p}{[}\PY{n}{targetData}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{,} 
+                                           \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n+nb}{max}\PY{p}{(}\PY{n}{blockedMap}\PY{p}{[}\PY{n}{targetData}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{]}\PY{p}{)}
+             \PY{n}{vmin}\PY{p}{,} \PY{n}{vmax} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{tmp\PYZus{}max}\PY{p}{,} \PY{n}{tmp\PYZus{}max}
+         
+             \PY{n}{mapdata} \PY{o}{=} \PY{n}{blockedMap}\PY{o}{.}\PY{n}{pivot\PYZus{}table}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{values}\PY{o}{=}\PY{n}{targetData}\PY{p}{)}
+             \PY{n}{masked\PYZus{}mapdata} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ma}\PY{o}{.}\PY{n}{masked\PYZus{}where}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{isnan}\PY{p}{(}\PY{n}{mapdata}\PY{p}{)}\PY{p}{,} \PY{n}{mapdata}\PY{p}{)}
+             
+             \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{9}\PY{p}{,} \PY{l+m+mi}{11}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{pcolor}\PY{p}{(}\PY{n}{masked\PYZus{}mapdata}\PY{p}{,} \PY{n}{vmin}\PY{o}{=}\PY{n}{vmin}\PY{p}{,} \PY{n}{vmax}\PY{o}{=}\PY{n}{vmax}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{n}{cmapname}\PY{p}{,} 
+                        \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}aaaaaa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} 지역 이름 표시}
+             \PY{k}{for} \PY{n}{idx}\PY{p}{,} \PY{n}{row} \PY{o+ow}{in} \PY{n}{blockedMap}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{} 광역시는 구 이름이 겹치는 경우가 많아서 시단위 이름도 같이 표시한다. }
+                 \PY{c+c1}{\PYZsh{}(중구, 서구)}
+                 \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{:}
+                     \PY{n}{dispname} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+                 \PY{k}{elif} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{==}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고성}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                     \PY{n}{dispname} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{고성}\PY{l+s+s1}{\PYZsq{}}
+                 \PY{k}{else}\PY{p}{:}
+                     \PY{n}{dispname} \PY{o}{=} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         
+                 \PY{c+c1}{\PYZsh{} 서대문구, 서귀포시 같이 이름이 3자 이상인 경우에 작은 글자로 표시한다.}
+                 \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{dispname}\PY{o}{.}\PY{n}{splitlines}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{3}\PY{p}{:}
+                     \PY{n}{fontsize}\PY{p}{,} \PY{n}{linespacing} \PY{o}{=} \PY{l+m+mf}{10.0}\PY{p}{,} \PY{l+m+mf}{1.1}
+                 \PY{k}{else}\PY{p}{:}
+                     \PY{n}{fontsize}\PY{p}{,} \PY{n}{linespacing} \PY{o}{=} \PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mf}{1.}
+         
+                 \PY{n}{annocolor} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{white}\PY{l+s+s1}{\PYZsq{}} \PY{k}{if} \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{n}{targetData}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{whitelabelmin} \PY{k}{else} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{n}{dispname}\PY{p}{,} \PY{p}{(}\PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{x}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{row}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{+}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{,} \PY{n}{weight}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bold}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+                              \PY{n}{fontsize}\PY{o}{=}\PY{n}{fontsize}\PY{p}{,} \PY{n}{ha}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{center}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{va}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{center}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{n}{annocolor}\PY{p}{,}
+                              \PY{n}{linespacing}\PY{o}{=}\PY{n}{linespacing}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} 시도 경계 그린다.}
+             \PY{k}{for} \PY{n}{path} \PY{o+ow}{in} \PY{n}{BORDER\PYZus{}LINES}\PY{p}{:}
+                 \PY{n}{ys}\PY{p}{,} \PY{n}{xs} \PY{o}{=} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{path}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xs}\PY{p}{,} \PY{n}{ys}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+         
+             \PY{n}{plt}\PY{o}{.}\PY{n}{gca}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{invert\PYZus{}yaxis}\PY{p}{(}\PY{p}{)}
+         
+             \PY{n}{plt}\PY{o}{.}\PY{n}{axis}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{off}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+             \PY{n}{cb} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{shrink}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{aspect}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+             \PY{n}{cb}\PY{o}{.}\PY{n}{set\PYZus{}label}\PY{p}{(}\PY{n}{datalabel}\PY{p}{)}
+         
+             \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{drawKorea}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{RdBu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{06. Election Result_files/06. Election Result_60_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{drawKorea}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}ahn}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{RdBu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{06. Election Result_files/06. Election Result_61_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{drawKorea}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ahn\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{RdBu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{06. Election Result_files/06. Election Result_62_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{k+kn}{import} \PY{n+nn}{folium}
+         \PY{k+kn}{import} \PY{n+nn}{json}
+         \PY{k+kn}{import} \PY{n+nn}{warnings}
+         \PY{n}{warnings}\PY{o}{.}\PY{n}{simplefilter}\PY{p}{(}\PY{n}{action}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{category}\PY{o}{=}\PY{n+ne}{FutureWarning}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{pop\PYZus{}folium} \PY{o}{=} \PY{n}{final\PYZus{}elect\PYZus{}data}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ID}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{k}{del} \PY{n}{pop\PYZus{}folium}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{광역시도}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{k}{del} \PY{n}{pop\PYZus{}folium}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{시군}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         
+         \PY{n}{pop\PYZus{}folium}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}38}]:}             pop      moon   hong    ahn  rate\_moon  rate\_hong   rate\_ahn  y  \textbackslash{}
+         ID                                                                            
+         서울 종로  102566.0   42512.0  22325  22313  41.448433  21.766472  21.754773  4   
+         서울 중구   82852.0   34062.0  17901  19372  41.111862  21.605996  23.381451  5   
+         서울 용산  148157.0   58081.0  35230  32109  39.202333  23.778829  21.672280  6   
+         서울 성동  203175.0   86686.0  40566  45674  42.665682  19.966039  22.480128  5   
+         서울 광진  240030.0  105512.0  46368  52824  43.957839  19.317585  22.007249  6   
+         
+                x  moon\_vs\_hong  moon\_vs\_ahn  ahn\_vs\_hong  
+         ID                                                
+         서울 종로  6     19.681961    19.693661    -0.011700  
+         서울 중구  6     19.505866    17.730411     1.775455  
+         서울 용산  6     15.423503    17.530053    -2.106549  
+         서울 성동  7     22.699643    20.185554     2.514089  
+         서울 광진  7     24.640253    21.950590     2.689664  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{geo\PYZus{}path} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../data/05. skorea\PYZus{}municipalities\PYZus{}geo\PYZus{}simple.json}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n}{geo\PYZus{}str} \PY{o}{=} \PY{n}{json}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{n+nb}{open}\PY{p}{(}\PY{n}{geo\PYZus{}path}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n+nb}{map} \PY{o}{=} \PY{n}{folium}\PY{o}{.}\PY{n}{Map}\PY{p}{(}\PY{n}{location}\PY{o}{=}\PY{p}{[}\PY{l+m+mf}{36.2002}\PY{p}{,} \PY{l+m+mf}{127.054}\PY{p}{]}\PY{p}{,} \PY{n}{zoom\PYZus{}start}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{)}
+         \PY{n+nb}{map}\PY{o}{.}\PY{n}{choropleth}\PY{p}{(}\PY{n}{geo\PYZus{}data} \PY{o}{=} \PY{n}{geo\PYZus{}str}\PY{p}{,}
+                        \PY{n}{data} \PY{o}{=} \PY{n}{pop\PYZus{}folium}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+                        \PY{n}{columns} \PY{o}{=} \PY{p}{[}\PY{n}{pop\PYZus{}folium}\PY{o}{.}\PY{n}{index}\PY{p}{,} \PY{n}{pop\PYZus{}folium}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{moon\PYZus{}vs\PYZus{}hong}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{p}{,}
+                        \PY{n}{fill\PYZus{}color} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{PuBu}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{c+c1}{\PYZsh{}PuRd, YlGnBu}
+                        \PY{n}{key\PYZus{}on} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{feature.id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n+nb}{map}
+\end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}39}]:} <folium.folium.Map at 0x1134e76a0>
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
