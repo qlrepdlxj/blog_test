@@ -13117,7 +13117,14 @@ div#notebook {
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>영화 빅데이터 분석</p>
+<h1 id="&#50689;&#54868;-&#48709;&#45936;&#51060;&#53552;-&#48516;&#49437;">&#50689;&#54868; &#48709;&#45936;&#51060;&#53552; &#48516;&#49437;<a class="anchor-link" href="#&#50689;&#54868;-&#48709;&#45936;&#51060;&#53552;-&#48516;&#49437;">&#182;</a></h1><p>영화진흥위원회의 영화관 입장권 통합 전산망 오픈 API에서 제공하는 박스오피스 결과를 통해 영화의 흥행을 분석</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="(1)-&#50689;&#54868;-&#45936;&#51060;&#53552;-&#49688;&#51665;">(1) &#50689;&#54868; &#45936;&#51060;&#53552; &#49688;&#51665;<a class="anchor-link" href="#(1)-&#50689;&#54868;-&#45936;&#51060;&#53552;-&#49688;&#51665;">&#182;</a></h2><p>API에서 제공하는 일일박스오피스 정보를 불러와 JSON파일로 저장</p>
 
 </div>
 </div>
@@ -13130,11 +13137,23 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
-
+<span class="c1"># api 사용을 위해 발급받은 key 값을 변수에 저장</span>
 <span class="n">key</span><span class="o">=</span><span class="s1">&#39;ad816991534afeaef71f07e7336b0d61&#39;</span>
+<span class="n">targetDt</span><span class="o">=</span><span class="mi">20170301</span>
+</pre></div>
 
-<span class="n">targetDt</span><span class="o">=</span><span class="mi">20180101</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">)):</span>
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">32</span><span class="p">)):</span>
+<span class="c1">#일일 박스오피스를 아무 옵션도 주지않고 날짜별로 검색한 뒤 JSON파일 저장</span>
     <span class="n">url1</span><span class="o">=</span><span class="s1">&#39;http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=&#39;</span>\
         <span class="o">+</span><span class="n">key</span><span class="o">+</span><span class="s1">&#39;&amp;targetDt=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span>
     
@@ -13142,27 +13161,27 @@ div#notebook {
     <span class="n">text1</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="n">text</span>
     <span class="n">d1</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text1</span><span class="p">)</span>
     
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/daily_box_office/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">make_file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/daily_box_office/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">make_file</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">make_file</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
-        
-    <span class="n">url2</span><span class="o">=</span><span class="s1">&#39;http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=&#39;</span>\
-        <span class="o">+</span><span class="n">key</span><span class="o">+</span><span class="s1">&#39;&amp;targetDt=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;repNationCd=K&#39;</span>
+
+<span class="c1"># 한국영화의 일일 박스오피스 자료를 검색하고 JSON파일로 저장</span>
+    <span class="n">url2</span><span class="o">=</span><span class="n">url1</span><span class="o">+</span><span class="s1">&#39;&amp;repNationCd=K&#39;</span>
     
     <span class="n">res2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url2</span><span class="p">)</span>
     <span class="n">text2</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">text</span>
     <span class="n">d2</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text2</span><span class="p">)</span>
     
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/daily_box_office_k/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_K.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">make_file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/daily_box_office_k/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_K.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">make_file</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d2</span><span class="p">,</span> <span class="n">make_file</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
         
-    <span class="n">url3</span><span class="o">=</span><span class="s1">&#39;http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=&#39;</span>\
-        <span class="o">+</span><span class="n">key</span><span class="o">+</span><span class="s1">&#39;&amp;targetDt=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&amp;repNationCd=F&#39;</span>    
+<span class="c1"># 해외영화의 일일 박스오피스 자료를 검색하고 JSON파일로 저장</span>
+    <span class="n">url3</span><span class="o">=</span><span class="n">url1</span><span class="o">+</span><span class="s1">&#39;&amp;repNationCd=F&#39;</span>    
     
     <span class="n">res3</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url3</span><span class="p">)</span>  
     <span class="n">text3</span> <span class="o">=</span> <span class="n">res3</span><span class="o">.</span><span class="n">text</span>    
     <span class="n">d3</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text3</span><span class="p">)</span>
         
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/daily_box_office_f/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_F.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">make_file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/daily_box_office_f/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_F.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">make_file</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d3</span><span class="p">,</span> <span class="n">make_file</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
     
     <span class="n">targetDt</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -13177,27 +13196,12 @@ div#notebook {
 
 <div class="output_area">
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3</pre>
-</div>
-
-</div>
-
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>100%|██████████| 31/31 [01:13&lt;00:00,  2.24s/it]
+</pre>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -13207,20 +13211,16 @@ div#notebook {
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">result</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">result_name</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">targetDt</span><span class="o">=</span><span class="mi">20180101</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>   
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/2018/01/daily_box_office/&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">targetDt</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_file</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;boxOfficeResult&#39;</span><span class="p">][</span><span class="s1">&#39;dailyBoxOfficeList&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;salesAmt&#39;</span><span class="p">])</span>
+    <span class="n">result_name</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;boxOfficeResult&#39;</span><span class="p">][</span><span class="s1">&#39;dailyBoxOfficeList&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;movieNm&#39;</span><span class="p">])</span>
+<span class="n">result_name</span>
 </pre></div>
 
     </div>
@@ -13235,7 +13235,16 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>12</pre>
+<pre>[&#39;신과함께-죄와 벌&#39;,
+ &#39;1987&#39;,
+ &#39;강철비&#39;,
+ &#39;위대한 쇼맨&#39;,
+ &#39;극장판 포켓몬스터 너로 정했다!&#39;,
+ &#39;몬스터 패밀리&#39;,
+ &#39;원더&#39;,
+ &#39;뽀로로 극장판 공룡섬 대모험&#39;,
+ &#39;극장판 프리파라 모두의 동경♪ 렛츠고☆프리파리&#39;,
+ &#39;스타워즈: 라스트 제다이&#39;]</pre>
 </div>
 
 </div>
@@ -13244,40 +13253,48 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>test1</p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.offline</span> <span class="k">as</span> <span class="nn">offline</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">result_name</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">result</span>
+<span class="n">offline</span><span class="o">.</span><span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="n">trace</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Pie</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span> 
+<span class="n">offline</span><span class="o">.</span><span class="n">iplot</span><span class="p">([</span><span class="n">trace</span><span class="p">],</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;basic_pie_chart&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script><script>requirejs.config({paths: { 'plotly': ['https://cdn.plot.ly/plotly-latest.min']},});if(!window._Plotly) {require(['plotly'],function(plotly) {window._Plotly=plotly;});}</script>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div id="07bf964d-8919-4a0d-99a7-e524ad271d94" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("07bf964d-8919-4a0d-99a7-e524ad271d94", [{"labels": ["\uc2e0\uacfc\ud568\uaed8-\uc8c4\uc640 \ubc8c", "1987", "\uac15\ucca0\ube44", "\uc704\ub300\ud55c \uc1fc\ub9e8", "\uadf9\uc7a5\ud310 \ud3ec\ucf13\ubaac\uc2a4\ud130 \ub108\ub85c \uc815\ud588\ub2e4!", "\ubaac\uc2a4\ud130 \ud328\ubc00\ub9ac", "\uc6d0\ub354", "\ubf40\ub85c\ub85c \uadf9\uc7a5\ud310 \uacf5\ub8e1\uc12c \ub300\ubaa8\ud5d8", "\uadf9\uc7a5\ud310 \ud504\ub9ac\ud30c\ub77c \ubaa8\ub450\uc758 \ub3d9\uacbd\u266a \ub81b\uce20\uace0\u2606\ud504\ub9ac\ud30c\ub9ac", "\uc2a4\ud0c0\uc6cc\uc988: \ub77c\uc2a4\ud2b8 \uc81c\ub2e4\uc774"], "values": ["7715149100", "4460462100", "944228600", "509947700", "262886500", "205793300", "158549600", "109207600", "47882900", "35090500"], "type": "pie", "uid": "8a120f9a-f8db-4461-b1af-33ac15011c52"}], {}, {"showLink": true, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly"})});</script><script type="text/javascript">window.addEventListener("resize", function(){window._Plotly.Plots.resize(document.getElementById("07bf964d-8919-4a0d-99a7-e524ad271d94"));});</script>
+</div>
+
+</div>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>test2</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>test3</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>test4</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>test5</p>
-
-</div>
-</div>
 </div>
     </div>
   </div>
