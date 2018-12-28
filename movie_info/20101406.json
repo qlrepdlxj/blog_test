@@ -1,0 +1,71 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20101406",
+			"movieNm": "여자의 일생",
+			"movieNmEn": "Life of Woman",
+			"movieNmOg": "",
+			"showTm": "115",
+			"prdtYear": "1968",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "드라마"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "신상옥",
+					"peopleNmEn": "SHIN Sang-ok"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "최은희",
+					"peopleNmEn": "CHOI Eun-hee",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "남궁원",
+					"peopleNmEn": "NAMKOONG Won",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "도금봉",
+					"peopleNmEn": "DO Kum-bong",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김동원",
+					"peopleNmEn": "KIM Dong-won",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

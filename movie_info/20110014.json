@@ -1,0 +1,92 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20110014",
+			"movieNm": "연산군",
+			"movieNmEn": "Prince Yeonsan",
+			"movieNmOg": "",
+			"showTm": "133",
+			"prdtYear": "1961",
+			"openDt": "19620101",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "사극"
+				},
+				{
+					"genreNm": "드라마"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "신상옥",
+					"peopleNmEn": "SHIN Sang-ok"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "신영균",
+					"peopleNmEn": "SHIN Young-kyun",
+					"cast": "연산군",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "최은희",
+					"peopleNmEn": "CHOI Eun-hee",
+					"cast": "신비",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "도금봉",
+					"peopleNmEn": "DO Kum-bong",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "신성일",
+					"peopleNmEn": "SHIN Seong-il",
+					"cast": "진성대군",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김동원",
+					"peopleNmEn": "KIM Dong-won",
+					"cast": "성종",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20100951",
+					"companyNm": "신필름",
+					"companyNmEn": "",
+					"companyPartNm": "제작사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "",
+					"watchGradeNm": "청소년관람불가"
+				}
+			],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

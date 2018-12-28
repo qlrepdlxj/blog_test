@@ -1,0 +1,77 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19730023",
+			"movieNm": "흑권",
+			"movieNmEn": "Heukgwon",
+			"movieNmOg": "",
+			"showTm": "91",
+			"prdtYear": "1973",
+			"openDt": "19730909",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "액션"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "황풍",
+					"peopleNmEn": "Feng Huang"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "이준구",
+					"peopleNmEn": "",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "모영",
+					"peopleNmEn": "Angela Mao",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20114663",
+					"companyNm": "안양",
+					"companyNmEn": "",
+					"companyPartNm": "제작사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "",
+					"watchGradeNm": "12세이상관람가"
+				}
+			],
+			"staffs": [
+				{
+					"peopleNm": "곽일로",
+					"peopleNmEn": "GWAK Il-ro",
+					"staffRoleNm": "시나리오(각본)"
+				}
+			]
+		},
+		"source": "영화진흥위원회"
+	}
+}

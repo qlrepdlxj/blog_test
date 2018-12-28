@@ -1,0 +1,64 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20149384",
+			"movieNm": "청일전쟁과 여걸 민비",
+			"movieNmEn": "The Sino-Japanese War and Queen Min the Heroine",
+			"movieNmOg": "",
+			"showTm": "160",
+			"prdtYear": "1965",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "드라마"
+				},
+				{
+					"genreNm": "사극"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "임원식",
+					"peopleNmEn": "Lim Won-sik"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "김승호",
+					"peopleNmEn": "KIM Seung-ho",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "최은희",
+					"peopleNmEn": "CHOI Eun-hee",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김진규",
+					"peopleNmEn": "KIM Jin-gyu",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

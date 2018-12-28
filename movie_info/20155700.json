@@ -1,0 +1,60 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20155700",
+			"movieNm": "왕자 호동",
+			"movieNmEn": "Prince Hodong",
+			"movieNmOg": "",
+			"showTm": "121",
+			"prdtYear": "1962",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "사극"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "한형모",
+					"peopleNmEn": "HAN Hyeong-mo"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "김진규",
+					"peopleNmEn": "KIM Jin-gyu",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "엄앵란",
+					"peopleNmEn": "UM Aeng-ran",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [
+				{
+					"auditNo": "",
+					"watchGradeNm": ""
+				}
+			],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

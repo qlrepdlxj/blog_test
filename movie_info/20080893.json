@@ -1,0 +1,97 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20080893",
+			"movieNm": "렌의 애가",
+			"movieNmEn": "Len'S Sonata",
+			"movieNmOg": "",
+			"showTm": "103",
+			"prdtYear": "1969",
+			"openDt": "19690101",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "드라마"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "김기영",
+					"peopleNmEn": "KIM Ki-young"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "김진규",
+					"peopleNmEn": "KIM Jin-gyu",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김지미",
+					"peopleNmEn": "KIM Ji-mee",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20060794",
+					"companyNm": "세기상사㈜",
+					"companyNmEn": "",
+					"companyPartNm": "제작사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "",
+					"watchGradeNm": "15세이상관람가"
+				}
+			],
+			"staffs": [
+				{
+					"peopleNm": "이정근",
+					"peopleNmEn": "LEE Jung-geun",
+					"staffRoleNm": "투자"
+				},
+				{
+					"peopleNm": "한상기",
+					"peopleNmEn": "HAN Sang ki",
+					"staffRoleNm": "음악"
+				},
+				{
+					"peopleNm": "김재영",
+					"peopleNmEn": "KIM Jae-young",
+					"staffRoleNm": "촬영"
+				},
+				{
+					"peopleNm": "장현수",
+					"peopleNmEn": "JANG Hyun-soo",
+					"staffRoleNm": "편집"
+				},
+				{
+					"peopleNm": "김기영",
+					"peopleNmEn": "KIM Ki-young",
+					"staffRoleNm": "시나리오(각본)"
+				}
+			]
+		},
+		"source": "영화진흥위원회"
+	}
+}

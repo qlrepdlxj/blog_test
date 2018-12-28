@@ -1,0 +1,62 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19598036",
+			"movieNm": "여사장",
+			"movieNmEn": "A Female Boss",
+			"movieNmOg": "",
+			"showTm": "105",
+			"prdtYear": "1959",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "코미디"
+				},
+				{
+					"genreNm": "멜로/로맨스"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "한형모",
+					"peopleNmEn": "HAN Hyeong-mo"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "조미령",
+					"peopleNmEn": "JO Mi-ryeong",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "이수련",
+					"peopleNmEn": "",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

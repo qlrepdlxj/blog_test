@@ -1,0 +1,71 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19688044",
+			"movieNm": "대원군",
+			"movieNmEn": "Prince Daewon",
+			"movieNmOg": "大院君",
+			"showTm": "120",
+			"prdtYear": "1968",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "사극"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "신상옥",
+					"peopleNmEn": "SHIN Sang-ok"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "신영균",
+					"peopleNmEn": "SHIN Young-kyun",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김지미",
+					"peopleNmEn": "KIM Ji-mee",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "최남현",
+					"peopleNmEn": "CHOI Nam-Hyun",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "이풍구",
+					"peopleNmEn": "Lee Pung-gu ",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

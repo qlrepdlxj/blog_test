@@ -1,0 +1,123 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19820052",
+			"movieNm": "애인",
+			"movieNmEn": "Lover",
+			"movieNmOg": "愛人",
+			"showTm": "108",
+			"prdtYear": "1982",
+			"openDt": "19820724",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "드라마"
+				},
+				{
+					"genreNm": "멜로/로맨스"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "박호태",
+					"peopleNmEn": "PARK Ho-tae"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "방희",
+					"peopleNmEn": "BANG Hee",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "신일룡",
+					"peopleNmEn": "Shin Il-Ryong",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "장미희",
+					"peopleNmEn": "CHANG Mi-hee",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김미영",
+					"peopleNmEn": "Kim Mi-yeong",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "최연호",
+					"peopleNmEn": "",
+					"cast": "사채업자",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20103093",
+					"companyNm": "(주)동아수출공사",
+					"companyNmEn": "Dong-a Export Co., LTD",
+					"companyPartNm": "제작사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "6090",
+					"watchGradeNm": "연소자관람불가"
+				}
+			],
+			"staffs": [
+				{
+					"peopleNm": "이권석",
+					"peopleNmEn": "",
+					"staffRoleNm": "투자"
+				},
+				{
+					"peopleNm": "김남진",
+					"peopleNmEn": "KIM Nam Jin",
+					"staffRoleNm": "촬영"
+				},
+				{
+					"peopleNm": "이철혁",
+					"peopleNmEn": "LEE Cheol-hyeok",
+					"staffRoleNm": "음악"
+				},
+				{
+					"peopleNm": "김형준",
+					"peopleNmEn": "Kim Hyung-joon",
+					"staffRoleNm": "액션/스턴트팀"
+				},
+				{
+					"peopleNm": "현동춘",
+					"peopleNmEn": "HYEON Dong-chun",
+					"staffRoleNm": "편집"
+				},
+				{
+					"peopleNm": "정경희",
+					"peopleNmEn": "JEONG Kyung-hee",
+					"staffRoleNm": "조명"
+				}
+			]
+		},
+		"source": "영화진흥위원회"
+	}
+}

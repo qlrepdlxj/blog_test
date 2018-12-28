@@ -1,0 +1,123 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19600018",
+			"movieNm": "하녀",
+			"movieNmEn": "The Housemaid",
+			"movieNmOg": "",
+			"showTm": "111",
+			"prdtYear": "1960",
+			"openDt": "19601103",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "멜로/로맨스"
+				},
+				{
+					"genreNm": "스릴러"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "김기영",
+					"peopleNmEn": "KIM Ki-young"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "김진규",
+					"peopleNmEn": "KIM Jin-gyu",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "이은심",
+					"peopleNmEn": "LEE Eun-shim",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "주증녀",
+					"peopleNmEn": "JU Jeung-nyeo",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "엄앵란",
+					"peopleNmEn": "UM Aeng-ran",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "안성기",
+					"peopleNmEn": "AHN Sung-ki",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20110977",
+					"companyNm": "김기영프로덕션",
+					"companyNmEn": "Kim Ki Young Production",
+					"companyPartNm": "제작사"
+				},
+				{
+					"companyCd": "20139937",
+					"companyNm": "세계영화재단",
+					"companyNmEn": "World Cinema Foundation",
+					"companyPartNm": "해외세일즈사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "2010-F201",
+					"watchGradeNm": "15세이상관람가"
+				},
+				{
+					"auditNo": "",
+					"watchGradeNm": "청소년관람불가"
+				}
+			],
+			"staffs": [
+				{
+					"peopleNm": "김기영",
+					"peopleNmEn": "KIM Ki-young",
+					"staffRoleNm": "시나리오(각본)"
+				},
+				{
+					"peopleNm": "이정은",
+					"peopleNmEn": "JUNG-EUN LEE",
+					"staffRoleNm": "소품팀"
+				},
+				{
+					"peopleNm": "조은영",
+					"peopleNmEn": "",
+					"staffRoleNm": "홍보/마케팅 진행"
+				},
+				{
+					"peopleNm": "김지은",
+					"peopleNmEn": "",
+					"staffRoleNm": "기획진행"
+				}
+			]
+		},
+		"source": "영화진흥위원회"
+	}
+}

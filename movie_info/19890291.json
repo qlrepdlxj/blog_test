@@ -1,0 +1,122 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19890291",
+			"movieNm": "해리가 샐리를 만났을 때",
+			"movieNmEn": "When Harry Met Sally",
+			"movieNmOg": "",
+			"showTm": "95",
+			"prdtYear": "1988",
+			"openDt": "19891118",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "미국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "코미디"
+				},
+				{
+					"genreNm": "드라마"
+				},
+				{
+					"genreNm": "멜로/로맨스"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "롭 라이너",
+					"peopleNmEn": "Rob Reiner"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "빌리 크리스탈",
+					"peopleNmEn": "Billy Crystal",
+					"cast": "해리 번스",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "맥 라이언",
+					"peopleNmEn": "Meg Ryan",
+					"cast": "샐리 앨브라이트",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20102502",
+					"companyNm": "캐슬 락 엔터테인먼트",
+					"companyNmEn": "Castle Rock Entertainment",
+					"companyPartNm": "제작사"
+				},
+				{
+					"companyCd": "20102771",
+					"companyNm": "콜럼비아 픽쳐스 코포레이션",
+					"companyNmEn": "Columbia Pictures Corporation",
+					"companyPartNm": "제작사"
+				},
+				{
+					"companyCd": "20168728",
+					"companyNm": "씨네그루(주)키다리이엔티",
+					"companyNmEn": "KIDARI ENT",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20102771",
+					"companyNm": "콜럼비아 픽쳐스 코포레이션",
+					"companyNmEn": "Columbia Pictures Corporation",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20168728",
+					"companyNm": "씨네그루(주)키다리이엔티",
+					"companyNmEn": "KIDARI ENT",
+					"companyPartNm": "수입사"
+				},
+				{
+					"companyCd": "20100980",
+					"companyNm": "현진필름",
+					"companyNmEn": "",
+					"companyPartNm": "수입사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "89-349",
+					"watchGradeNm": "연소자관람불가"
+				},
+				{
+					"auditNo": "2016-MF01776",
+					"watchGradeNm": "15세이상관람가"
+				}
+			],
+			"staffs": [
+				{
+					"peopleNm": "해리 코닉 주니어",
+					"peopleNmEn": "Harry Connick Jr.",
+					"staffRoleNm": "음악"
+				},
+				{
+					"peopleNm": "제인 머스키",
+					"peopleNmEn": "Jane Musky",
+					"staffRoleNm": "아트디렉터"
+				}
+			]
+		},
+		"source": "영화진흥위원회"
+	}
+}

@@ -1,0 +1,147 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "19880070",
+			"movieNm": "칠수와 만수",
+			"movieNmEn": "Chil-Su And Man-Su",
+			"movieNmOg": "",
+			"showTm": "108",
+			"prdtYear": "1988",
+			"openDt": "19881126",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "드라마"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "박광수",
+					"peopleNmEn": "PARK Kwang-su"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "안성기",
+					"peopleNmEn": "AHN Sung-ki",
+					"cast": "만수",
+					"castEn": "Man-su"
+				},
+				{
+					"peopleNm": "박중훈",
+					"peopleNmEn": "PARK Joong-hoon",
+					"cast": "칠수",
+					"castEn": "Chil-Su"
+				},
+				{
+					"peopleNm": "배종옥",
+					"peopleNmEn": "BAE Jong-ok",
+					"cast": "지나",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "홍성민",
+					"peopleNmEn": "HONG Seong-min",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김일우",
+					"peopleNmEn": "KIM Il-woo",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "이승호",
+					"peopleNmEn": "LEE Seung-ho",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "김명국",
+					"peopleNmEn": "KIM Myeong-gook",
+					"cast": "백화점 지배인",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20103093",
+					"companyNm": "(주)동아수출공사",
+					"companyNmEn": "Dong-a Export Co., LTD",
+					"companyPartNm": "제작사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "88-284",
+					"watchGradeNm": "고등학생이상관람가"
+				}
+			],
+			"staffs": [
+				{
+					"peopleNm": "이우석",
+					"peopleNmEn": "LEE Woo-suk",
+					"staffRoleNm": "투자"
+				},
+				{
+					"peopleNm": "이권석",
+					"peopleNmEn": "",
+					"staffRoleNm": "투자"
+				},
+				{
+					"peopleNm": "이상우",
+					"peopleNmEn": "YI Sang-woo",
+					"staffRoleNm": "시나리오(각본)"
+				},
+				{
+					"peopleNm": "이영길",
+					"peopleNmEn": "LEE Young-gil",
+					"staffRoleNm": "사운드"
+				},
+				{
+					"peopleNm": "유영길",
+					"peopleNmEn": "YOU Young-gill",
+					"staffRoleNm": "촬영"
+				},
+				{
+					"peopleNm": "김동호",
+					"peopleNmEn": "KIM Dong-ho",
+					"staffRoleNm": "조명"
+				},
+				{
+					"peopleNm": "이명수",
+					"peopleNmEn": "LEE Myoung-soo",
+					"staffRoleNm": "아트디렉터"
+				},
+				{
+					"peopleNm": "김수철",
+					"peopleNmEn": "KIM Soo-chul",
+					"staffRoleNm": "음악"
+				},
+				{
+					"peopleNm": "최인석",
+					"peopleNmEn": "",
+					"staffRoleNm": "각색"
+				}
+			]
+		},
+		"source": "영화진흥위원회"
+	}
+}

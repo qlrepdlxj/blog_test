@@ -1,0 +1,109 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20010130",
+			"movieNm": "빌리 엘리어트",
+			"movieNmEn": "Billy Elliot",
+			"movieNmOg": "",
+			"showTm": "110",
+			"prdtYear": "2000",
+			"openDt": "20010216",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "영국"
+				},
+				{
+					"nationNm": "프랑스"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "가족"
+				},
+				{
+					"genreNm": "드라마"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "스티븐 달드리",
+					"peopleNmEn": "Stephen Daldry"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "제이미 벨",
+					"peopleNmEn": "Jamie Bell",
+					"cast": "빌리 엘리어트",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "줄리 월터스",
+					"peopleNmEn": "Julie Walters",
+					"cast": "윌킨슨 부인",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털 배리어프리"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20122837",
+					"companyNm": "(주)팝엔터테인먼트",
+					"companyNmEn": "Pop Entertainment",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20100040",
+					"companyNm": "유아이피-씨아이씨영화및비디오배급(유)",
+					"companyNmEn": "UIP Korea",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20123058",
+					"companyNm": "그린나래미디어(주)",
+					"companyNmEn": "",
+					"companyPartNm": "수입사"
+				},
+				{
+					"companyCd": "20100040",
+					"companyNm": "유아이피-씨아이씨영화및비디오배급(유)",
+					"companyNmEn": "UIP Korea",
+					"companyPartNm": "수입사"
+				},
+				{
+					"companyCd": "20122837",
+					"companyNm": "(주)팝엔터테인먼트",
+					"companyNmEn": "Pop Entertainment",
+					"companyPartNm": "제공"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "2000-F403",
+					"watchGradeNm": "12세관람가"
+				},
+				{
+					"auditNo": "2016-MF02154",
+					"watchGradeNm": "12세이상관람가"
+				}
+			],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

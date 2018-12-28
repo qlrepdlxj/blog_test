@@ -1,0 +1,50 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20168088",
+			"movieNm": "2017 한국영화아카데미 33기 졸업영화제 - D",
+			"movieNmEn": "",
+			"movieNmOg": "",
+			"showTm": "77",
+			"prdtYear": "2016",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "옴니버스",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "기타"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "전희욱",
+					"peopleNmEn": "CHUN Hee-wook"
+				},
+				{
+					"peopleNm": "송주성",
+					"peopleNmEn": "SONG Joo-sung"
+				},
+				{
+					"peopleNm": "박지은",
+					"peopleNmEn": "PARK Ji-eun"
+				}
+			],
+			"actors": [],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

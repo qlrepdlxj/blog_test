@@ -1,0 +1,54 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20168087",
+			"movieNm": "2017 한국영화아카데미 33기 졸업영화제 - C",
+			"movieNmEn": "",
+			"movieNmOg": "",
+			"showTm": "86",
+			"prdtYear": "2016",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "옴니버스",
+			"nations": [
+				{
+					"nationNm": "한국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "기타"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "한가람",
+					"peopleNmEn": "HAN Ka-ram"
+				},
+				{
+					"peopleNm": "박인희",
+					"peopleNmEn": "PARK In-hee"
+				},
+				{
+					"peopleNm": "김영록",
+					"peopleNmEn": "KIM Young-rock"
+				},
+				{
+					"peopleNm": "손예은",
+					"peopleNmEn": "SON Ye-eun"
+				}
+			],
+			"actors": [],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}
