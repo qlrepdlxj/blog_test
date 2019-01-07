@@ -1,0 +1,150 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20030404",
+			"movieNm": "러브 액츄얼리",
+			"movieNmEn": "Love Actually",
+			"movieNmOg": "Love Actually",
+			"showTm": "130",
+			"prdtYear": "2003",
+			"openDt": "20031205",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "미국"
+				},
+				{
+					"nationNm": "영국"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "멜로/로맨스"
+				},
+				{
+					"genreNm": "드라마"
+				},
+				{
+					"genreNm": "코미디"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "리차드 커티스",
+					"peopleNmEn": "Richard Curtis"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "휴 그랜트",
+					"peopleNmEn": "Hugh Grant",
+					"cast": "영국 수상",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "콜린 퍼스",
+					"peopleNmEn": "Colin Firth",
+					"cast": "제이미 베넷",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "알란 릭맨",
+					"peopleNmEn": "Alan Rickman",
+					"cast": "해리 ",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "엠마 톰슨",
+					"peopleNmEn": "Emma Thompson",
+					"cast": "캐런",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "리암 니슨",
+					"peopleNmEn": "Liam Neeson",
+					"cast": "다니엘",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "로라 린니",
+					"peopleNmEn": "Laura Linney",
+					"cast": "사라",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "키이라 나이틀리",
+					"peopleNmEn": "Keira Knightley",
+					"cast": "쥴리엣",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "마틴 맥커천",
+					"peopleNmEn": "Martine Mccutcheon",
+					"cast": "나탈리 ",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "빌 나이",
+					"peopleNmEn": "Bill Nighy",
+					"cast": "빌리 맥",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20161101",
+					"companyNm": "(주)제이앤씨미디어그룹",
+					"companyNmEn": "",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20100649",
+					"companyNm": "UIP코리아",
+					"companyNmEn": "United International Pictures Korea",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20142369",
+					"companyNm": "(유)조이앤시네마",
+					"companyNmEn": "JOY N CINEMA",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20142369",
+					"companyNm": "(유)조이앤시네마",
+					"companyNmEn": "JOY N CINEMA",
+					"companyPartNm": "수입사"
+				},
+				{
+					"companyCd": "20100649",
+					"companyNm": "UIP코리아",
+					"companyNmEn": "United International Pictures Korea",
+					"companyPartNm": "수입사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "2003-F293",
+					"watchGradeNm": "15세관람가"
+				},
+				{
+					"auditNo": "2013-MF00921 ",
+					"watchGradeNm": "15세이상관람가"
+				}
+			],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

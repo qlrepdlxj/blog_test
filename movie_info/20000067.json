@@ -1,0 +1,120 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20000067",
+			"movieNm": "러브레터",
+			"movieNmEn": "Love Letter",
+			"movieNmOg": "ラブレタ?",
+			"showTm": "116",
+			"prdtYear": "1995",
+			"openDt": "19991120",
+			"prdtStatNm": "개봉",
+			"typeNm": "장편",
+			"nations": [
+				{
+					"nationNm": "일본"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "멜로/로맨스"
+				},
+				{
+					"genreNm": "드라마"
+				}
+			],
+			"directors": [
+				{
+					"peopleNm": "이와이 슌지",
+					"peopleNmEn": "Shunji Iwai"
+				}
+			],
+			"actors": [
+				{
+					"peopleNm": "나까야마 미호",
+					"peopleNmEn": "Miho Nakayama",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "토요카와 에츠시",
+					"peopleNmEn": "Etsushi Toyokawa",
+					"cast": "",
+					"castEn": ""
+				},
+				{
+					"peopleNm": "사카이 미키",
+					"peopleNmEn": "Miki Sakai",
+					"cast": "",
+					"castEn": ""
+				}
+			],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "필름",
+					"showTypeNm": "필름"
+				},
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [
+				{
+					"companyCd": "20103080",
+					"companyNm": "후지텔레비젼네트웍",
+					"companyNmEn": "Fuji Television Network",
+					"companyPartNm": "제작사"
+				},
+				{
+					"companyCd": "20161101",
+					"companyNm": "(주)제이앤씨미디어그룹",
+					"companyNmEn": "",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20142369",
+					"companyNm": "(유)조이앤시네마",
+					"companyNmEn": "JOY N CINEMA",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20122837",
+					"companyNm": "(주)팝엔터테인먼트",
+					"companyNmEn": "Pop Entertainment",
+					"companyPartNm": "배급사"
+				},
+				{
+					"companyCd": "20142369",
+					"companyNm": "(유)조이앤시네마",
+					"companyNmEn": "JOY N CINEMA",
+					"companyPartNm": "수입사"
+				},
+				{
+					"companyCd": "20100090",
+					"companyNm": "한국영상투자개발(주)",
+					"companyNmEn": "Korea Inage Investment Development Co.",
+					"companyPartNm": "수입사"
+				},
+				{
+					"companyCd": "20122497",
+					"companyNm": "(유)조이앤컨텐츠그룹",
+					"companyNmEn": "JOY N CONTENTS GROUP",
+					"companyPartNm": "수입사"
+				}
+			],
+			"audits": [
+				{
+					"auditNo": "99-F147",
+					"watchGradeNm": "전체관람가"
+				},
+				{
+					"auditNo": "2013-F61 ",
+					"watchGradeNm": "전체관람가"
+				}
+			],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}

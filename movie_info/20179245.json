@@ -1,0 +1,37 @@
+{
+	"movieInfoResult": {
+		"movieInfo": {
+			"movieCd": "20179245",
+			"movieNm": "판타스틱 단편 걸작선 1",
+			"movieNmEn": "Fantastic Short Films 1",
+			"movieNmOg": "",
+			"showTm": "",
+			"prdtYear": "2017",
+			"openDt": "",
+			"prdtStatNm": "기타",
+			"typeNm": "옴니버스",
+			"nations": [
+				{
+					"nationNm": "기타"
+				}
+			],
+			"genres": [
+				{
+					"genreNm": "기타"
+				}
+			],
+			"directors": [],
+			"actors": [],
+			"showTypes": [
+				{
+					"showTypeGroupNm": "2D",
+					"showTypeNm": "디지털"
+				}
+			],
+			"companys": [],
+			"audits": [],
+			"staffs": []
+		},
+		"source": "영화진흥위원회"
+	}
+}
