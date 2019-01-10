@@ -1,6 +1,0 @@
-{
-	"faultInfo": {
-		"message": "날싸형식에 맞게 입력하십시요.(YYYYMMDD)[parameterName=targetDt,parameterValue=2018232]",
-		"errorCode": "320103"
-	}
-}
